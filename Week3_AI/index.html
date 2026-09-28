@@ -4,68 +4,144 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsive Design</title>
+  <title>About Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #222;
+    :root {
+      --bg-color: #f4efe8;
+      --card-color: #fffdf9;
+      --text-color: #1f2937;
+      --accent-color: #7c3aed;
+      --button-color: #2563eb;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: "Inter", Arial, sans-serif;
+      transition: background 0.4s ease;
     }
 
     .card {
-      background: white;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: min(90%, 700px);
+      background: var(--card-color);
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(31, 41, 55, 0.12);
+      padding: 40px 32px;
+      text-align: center;
     }
 
     h1 {
-      font-size: 2.5rem;
-      color: #0b3d91;
+      margin: 0 0 16px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      color: var(--accent-color);
+      text-align: center;
     }
 
     p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin: 0 auto 24px;
+      max-width: 560px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 28px;
+      max-width: 400px;
+    }
+
+    li {
+      background: #f3e8ff;
+      border-radius: 999px;
+      padding: 10px 16px;
+      margin: 10px 0;
+      font-weight: 700;
+      color: #3b0764;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      background: var(--button-color);
+      color: white;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
     }
 
     @media (max-width: 768px) {
-      .card {
-        background: #dfeeff;
+      body {
         padding: 20px;
       }
 
-      h1 {
-        font-size: 1.8rem;
-        color: #003366;
+      .card {
+        padding: 28px 20px;
+        border-radius: 16px;
       }
 
       p {
+        font-size: 0.98rem;
+      }
+
+      li {
         font-size: 0.95rem;
-        color: #123;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>Responsive Design Example</h1>
-      <p>
-        This page looks different on mobile and desktop screens. On a larger
-        screen, the card is brighter and the text is larger. On a smaller
-        screen, the spacing and colors change to fit mobile devices better.
-      </p>
-    </div>
-  </div>
+  <main class="card">
+    <h1>About Me</h1>
+    <p>
+      Hi, I’m a curious learner who enjoys building things, solving problems,
+      and exploring creative ideas through code. I love turning simple ideas
+      into useful websites and learning new skills along the way.
+    </p>
+
+    <ul>
+      <li>Web Development</li>
+      <li>Design</li>
+      <li>Problem Solving</li>
+    </ul>
+
+    <button id="colorButton" type="button">Change Background</button>
+  </main>
+
+  <script>
+    const button = document.getElementById("colorButton");
+
+    button.addEventListener("click", () => {
+      const randomColor = () => Math.floor(Math.random() * 256);
+      const r = randomColor();
+      const g = randomColor();
+      const b = randomColor();
+      document.body.style.background = `rgb(${r}, ${g}, ${b})`;
+    });
+  </script>
 </body>
 
 </html>
