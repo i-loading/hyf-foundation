@@ -4,19 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me</title>
+  <title>About Ivan Sediakin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;700&display=swap"
     rel="stylesheet" />
   <style>
     :root {
-      --bg-color: #f4efe8;
       --card-color: #fffdf9;
-      --text-color: #1f2937;
       --accent-color: #7c3aed;
       --button-color: #2563eb;
+      --muted-color: #6b7280;
+      --border-color: #e7e1d8;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     * {
@@ -26,115 +29,394 @@
     body {
       margin: 0;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-color);
-      color: var(--text-color);
+      background: #f4efe8;
+      color: #1f2937;
       font-family: "Inter", Arial, sans-serif;
       transition: background 0.4s ease;
     }
 
-    .card {
-      width: min(90%, 700px);
-      background: var(--card-color);
-      border-radius: 20px;
-      box-shadow: 0 18px 40px rgba(31, 41, 55, 0.12);
-      padding: 40px 32px;
-      text-align: center;
+    .site-shell {
+      width: min(100% - 48px, 1080px);
+      margin: 0 auto;
     }
 
-    h1 {
-      margin: 0 0 16px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(2.1rem, 5vw, 3.2rem);
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px 0;
+    }
+
+    .wordmark {
       color: var(--accent-color);
-      text-align: center;
-    }
-
-    p {
-      font-size: 1.08rem;
-      line-height: 1.7;
-      margin: 0 auto 24px;
-      max-width: 560px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto 28px;
-      max-width: 400px;
-    }
-
-    li {
-      background: #f3e8ff;
-      border-radius: 999px;
-      padding: 10px 16px;
-      margin: 10px 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.35rem;
       font-weight: 700;
-      color: #3b0764;
+      text-decoration: none;
     }
 
-    button {
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: var(--muted-color);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--accent-color);
+    }
+
+    .main-content {
+      padding: 24px 0 72px;
+    }
+
+    .hero {
+      padding: clamp(40px, 8vw, 88px);
+      border: 1px solid rgba(124, 58, 237, 0.12);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 92% 12%, rgba(196, 181, 253, 0.48), transparent 28%),
+        var(--card-color);
+      box-shadow: 0 18px 40px rgba(31, 41, 55, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--accent-color);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      max-width: 700px;
+      margin: 0 0 20px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.8rem, 8vw, 5.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-title-accent {
+      color: var(--accent-color);
+    }
+
+    .hero-copy {
+      max-width: 600px;
+      margin: 0 0 30px;
+      color: var(--muted-color);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--button-color);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button-link:hover,
+    .button-link:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+    }
+
+    .text-link {
+      color: var(--accent-color);
+      font-weight: 700;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .content-section {
+      padding: 76px 0 0;
+      scroll-margin-top: 24px;
+    }
+
+    .section-heading {
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .section-description,
+    .about-copy {
+      color: var(--muted-color);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .section-description {
+      margin: 0;
+    }
+
+    .about-copy {
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .interest-card {
+      min-height: 190px;
+      padding: 26px;
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      background: var(--card-color);
+    }
+
+    .interest-number {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: var(--accent-color);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .interest-title {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+    }
+
+    .interest-copy {
+      margin: 0;
+      color: var(--muted-color);
+      line-height: 1.65;
+    }
+
+    .approach {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      align-items: center;
+      gap: 40px;
+      padding: clamp(28px, 5vw, 52px);
+      border-radius: 22px;
+      background: #ede6f8;
+      scroll-margin-top: 24px;
+    }
+
+    .approach-title {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2;
+    }
+
+    .approach-copy {
+      margin: 0;
+      color: #51465f;
+      line-height: 1.8;
+    }
+
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 26px 0 34px;
+      border-top: 1px solid var(--border-color);
+      color: var(--muted-color);
+      font-size: 0.9rem;
+    }
+
+    .footer-note {
+      margin: 0;
+    }
+
+    .back-to-top {
+      color: inherit;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      color: var(--accent-color);
+    }
+
+    .color-button {
       border: none;
       border-radius: 999px;
       background: var(--button-color);
-      color: white;
-      padding: 12px 24px;
-      font-size: 1rem;
+      color: #fff;
+      min-height: 46px;
+      padding: 0 22px;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    button:hover {
+    .color-button:hover,
+    .color-button:focus-visible {
       transform: translateY(-2px);
       box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
     }
 
-    @media (max-width: 768px) {
-      body {
-        padding: 20px;
+    @media (max-width: 700px) {
+      .site-shell {
+        width: min(100% - 32px, 1080px);
       }
 
-      .card {
-        padding: 28px 20px;
-        border-radius: 16px;
+      .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 0;
       }
 
-      p {
-        font-size: 0.98rem;
+      .site-nav {
+        gap: 20px;
       }
 
-      li {
-        font-size: 0.95rem;
+      .main-content {
+        padding: 12px 0 52px;
+      }
+
+      .hero {
+        border-radius: 20px;
+      }
+
+      .content-section {
+        padding-top: 56px;
+      }
+
+      .interest-grid,
+      .approach {
+        grid-template-columns: 1fr;
+      }
+
+      .interest-card {
+        min-height: auto;
+      }
+
+      .site-footer {
+        flex-wrap: wrap;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="card">
-    <h1>About Me</h1>
-    <p>
-      Hi, I’m a curious learner who enjoys building things, solving problems,
-      and exploring creative ideas through code. I love turning simple ideas
-      into useful websites and learning new skills along the way.
-    </p>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="#top">Ivan Sediakin</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#interests">Interests</a>
+        <a class="nav-link" href="#approach">My approach</a>
+      </nav>
+    </header>
 
-    <ul>
-      <li>Web Development</li>
-      <li>Design</li>
-      <li>Problem Solving</li>
-    </ul>
+    <main class="main-content" id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Curious learner · Creative problem-solver</p>
+        <h1 class="hero-title" id="page-title">Hello, I’m <span class="hero-title-accent">Ivan.</span></h1>
+        <p class="hero-copy">
+          I enjoy building things, exploring creative ideas, and turning what
+          I learn into useful experiences on the web.
+        </p>
+        <div class="hero-actions">
+          <a class="button-link" href="#about">Get to know me</a>
+          <a class="text-link" href="#interests">Explore my interests</a>
+        </div>
+      </section>
 
-    <button id="colorButton" type="button">Change Background</button>
-  </main>
+      <section class="content-section" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="eyebrow">A little about me</p>
+          <h2 class="section-title" id="about-title">Learning by making</h2>
+        </div>
+        <p class="about-copy">
+          I’m a curious learner who enjoys building things, solving problems,
+          and exploring creative ideas through code. I love turning simple
+          ideas into useful websites and learning new skills along the way.
+        </p>
+      </section>
+
+      <section class="content-section" id="interests" aria-labelledby="interests-title">
+        <div class="section-heading">
+          <p class="eyebrow">Things that keep me curious</p>
+          <h2 class="section-title" id="interests-title">What I enjoy exploring</h2>
+          <p class="section-description">Three areas that come together whenever I take on a new idea.</p>
+        </div>
+        <div class="interest-grid">
+          <article class="interest-card">
+            <span class="interest-number">01 / BUILD</span>
+            <h3 class="interest-title">Web development</h3>
+            <p class="interest-copy">Turning ideas into useful, accessible experiences on the web.</p>
+          </article>
+          <article class="interest-card">
+            <span class="interest-number">02 / CREATE</span>
+            <h3 class="interest-title">Design</h3>
+            <p class="interest-copy">Finding clear, thoughtful ways to bring an idea to life.</p>
+          </article>
+          <article class="interest-card">
+            <span class="interest-number">03 / SOLVE</span>
+            <h3 class="interest-title">Problem solving</h3>
+            <p class="interest-copy">Breaking challenges into smaller steps and learning as I go.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="approach-title">
+        <div class="approach" id="approach">
+          <h2 class="approach-title" id="approach-title">One idea at a time.</h2>
+          <p class="approach-copy">
+            I like starting with a simple idea, experimenting with how it could
+            work, and improving it as I learn. Every project is a chance to
+            practice, get curious, and make something a little more useful.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="footer-note">Thanks for stopping by.</p>
+      <button class="color-button" id="colorButton" type="button">Change background color</button>
+      <a class="back-to-top" href="#top">Back to top ↑</a>
+    </footer>
+  </div>
 
   <script>
-    const button = document.getElementById("colorButton");
+    const colorButton = document.getElementById("colorButton");
 
-    button.addEventListener("click", () => {
+    colorButton.addEventListener("click", () => {
       const randomColor = () => Math.floor(Math.random() * 256);
       const r = randomColor();
       const g = randomColor();
