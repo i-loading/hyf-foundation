@@ -1,51 +1,4 @@
-// Ex 2
 /*
-Create a variable that is 24 times 55
-Create a const and set it to be equal to your name
-With javascript console.log the first character in your name
-Create an array with 3 strings, three numbers and three booleans
-console.log the 4. element in the array made above
-Optional with javascript console.log the last character in your name.
-*/
-
-let number = 55 * 24;
-const myName = "Ivan";
-console.log(myName[0]);
-let myArr = ["one", "two", "three", 1, 2, 3, true, true, true];
-console.log(myArr[3]);
-console.log(myName[myName.length - 1]);
-
-// Ex 3
-/*
-Fix the errors
-Fix the errors in this script:
-const name = "benjamin";
-name = "benjamin-better";
-
-const pizzaPrice = 78;
-const pizzaPriceDiscounted = pizzaprice - 10;
-
-const users = ["peter", "Johnny", "Børge"];
-
-const lastUser = users[3];
-console.log(lastUser);
-*/
-
-let someName = "benjamin";
-someName = "benjamin-better";
-
-const pizzaPrice = 78;
-const pizzaPriceDiscounted = pizzaPrice - 10;
-
-const users = ["peter", "Johnny", "Børge"];
-
-const lastUser = users[users.length - 1];
-console.log(lastUser);
-
-// Ex 4
-/*
-Pizza project
-
 Part 1
 Create a special new folder called "pizza-exercise"
 Inside the folder create a new html file called "index.html"
@@ -68,4 +21,18 @@ New pizza order (takeaway: <takeaway or not?>): <amount of pizzas> <name of pizz
 Try to change the price of the pizza and then check if the total price is calculated correctly
 */
 
-// Done! =)
+console.log("I love pizza");
+
+let myFavPizza = "Home made one =)";
+let pizzaPrice = Infinity;
+console.log(
+  `New pizza order: ${myFavPizza}. The price of the pizza is: ${pizzaPrice}`,
+);
+
+let orderAmount = 1;
+let isForTakeaway = true;
+const totalPrice = orderAmount * pizzaPrice;
+const orderText = `
+New pizza order (takeaway: ${isForTakeaway ? "yes" : "no"}): Amount - ${orderAmount}, Name - ${myFavPizza}. Total cost for the order is: ${totalPrice}
+`;
+console.log(orderText);
