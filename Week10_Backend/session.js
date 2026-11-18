@@ -20,49 +20,64 @@ app.listen(port, () => {
 // Exercise 2
 import knex from "knex";
 
-// Подключение к базе данных SQLite
 const knexInstance = knex({
   client: "sqlite3",
   connection: {
-    filename: "./tasks.sqlite3",
+    filename: "./database.sqlite3",
   },
   useNullAsDefault: true,
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello from exercise 2 with correct schema!");
+  res.send("Hello from exercise 2!");
 });
 
 app.get("/all-users", async (req, res) => {
-  const rows = await knexInstance.raw("SELECT * FROM user ORDER BY id ASC;");
+  const rows = await knexInstance.raw("SELECT * FROM users ORDER BY id ASC;");
+  res.json(rows);
+});
+
+app.get("/unconfirmed-users", async (req, res) => {
+  const rows = await knexInstance.raw(
+    "SELECT * FROM users WHERE confirmed_at IS NULL;",
+  );
   res.json(rows);
 });
 
 app.get("/gmail-users", async (req, res) => {
   const rows = await knexInstance.raw(
-    "SELECT * FROM user WHERE email LIKE '%@gmail.com';",
+    "SELECT * FROM users WHERE email LIKE '%@gmail.com';",
+  );
+  res.json(rows);
+});
+
+app.get("/2022-users", async (req, res) => {
+  const rows = await knexInstance.raw(
+    "SELECT * FROM users WHERE strftime('%Y', created_at) = '2022';",
   );
   res.json(rows);
 });
 
 app.get("/user-count", async (req, res) => {
-  const result = await knexInstance.raw("SELECT COUNT(*) as count FROM user;");
+  const result = await knexInstance.raw("SELECT COUNT(*) as count FROM users;");
   res.json(result[0]);
+});
+
+app.get("/last-name-count", async (req, res) => {
+  const rows = await knexInstance.raw(
+    "SELECT last_name, COUNT(*) as count FROM users GROUP BY last_name ORDER BY last_name ASC;",
+  );
+  res.json(rows);
 });
 
 app.get("/first-user", async (req, res) => {
   const rows = await knexInstance.raw(
-    "SELECT * FROM user ORDER BY id ASC LIMIT 1;",
+    "SELECT * FROM users ORDER BY id ASC LIMIT 1;",
   );
   if (rows.length === 0) {
     return res.status(404).json({ error: "User not found" });
   }
   res.json(rows[0]);
-});
-
-app.get("/all-tasks", async (req, res) => {
-  const rows = await knexInstance.raw("SELECT * FROM task ORDER BY id ASC;");
-  res.json(rows);
 });
 
 app.listen(port, () => {
