@@ -1,0 +1,169 @@
+/* Theme variables (Light mode default) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --card-bg: #f9fafb;
+  --border-color: #e5e7eb;
+  --btn-bg: #111111;
+  --btn-text: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --btn-bg: #ffffff;
+  --btn-text: #111111;
+}
+
+/* Base layout */
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  line-height: 1.5;
+  margin: 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.exercise-section {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--card-bg);
+}
+
+.exercise-section h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+/* Exercise 1: Favourite Dishes */
+#ex1-dish-list {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+#ex1-dish-list li {
+  padding: 0.25rem 0;
+}
+
+/* Exercise 2: Podcasts */
+#ex2-podcast-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 1rem;
+}
+
+#ex2-podcast-list li {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.85rem;
+  background-color: var(--bg-color);
+}
+
+#ex2-podcast-list h1 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+#ex2-podcast-list img {
+  display: block;
+  max-width: 100%;
+  width: 268px;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Exercise 3: Image Inserter */
+#ex3-image-container img {
+  display: block;
+  max-width: 100%;
+  width: 320px;
+  height: auto;
+  margin-top: 0.75rem;
+  border-radius: 6px;
+}
+
+/* Exercise 4: Light Mode / Dark Mode */
+#ex4-theme-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+}
+
+/* Exercise 5: Astronauts in Space */
+#ex5-astronauts-container p {
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+
+#ex5-astronaut-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#ex5-astronaut-list li {
+  padding: 0.15rem 0;
+}
+
+/* Exercise 6: Dog Fan Website */
+.ex6-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.ex6-card {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  background-color: var(--bg-color);
+}
+
+.ex6-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.ex6-card img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: var(--card-bg);
+}
+
+#ex6-breed-name {
+  margin: 0.65rem 0;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+#ex6-new-breed-btn {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+}
